@@ -1,0 +1,156 @@
+/* CSS for Mooveat Address Book Admin */
+/* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+------------------------------------------------------------- */
+body {
+  /*  CPT ORGANISATION */ }
+  body.post-type-mv_address_book .acf-field .acf-label {
+    margin: 0;
+    background: #fff;
+    border-radius: 10px 10px 0 0; }
+    body.post-type-mv_address_book .acf-field .acf-label label {
+      margin: 0;
+      padding: 5px 12px;
+      cursor: auto;
+      text-transform: uppercase; }
+  body.post-type-mv_address_book .acf-field .acf-input .acf-input .acf-label label {
+    display: none; }
+  body.post-type-mv_address_book .acf-field.mv-etiquettes .acf-input .acf-label label, body.post-type-mv_address_book .acf-field.mv-etiquettes .acf-label label, body.post-type-mv_address_book .acf-field.mv-cl6 .acf-input .acf-label label, body.post-type-mv_address_book .acf-field.mv-cl6 .acf-label label, body.post-type-mv_address_book .acf-field.organisation-name-to-be-added .acf-input .acf-label label, body.post-type-mv_address_book .acf-field.organisation-name-to-be-added .acf-label label {
+    display: block !important;
+    padding: 2px 0;
+    font-size: 0.9em; }
+  body.post-type-mv_address_book .acf-fields.-border {
+    border: none;
+    border-radius: 0 0 10px 10px; }
+  body.post-type-mv_address_book .acf-fields > .acf-field {
+    border: none;
+    padding: 7px 12px; }
+  body.post-type-mv_address_book .acf-field-clone.col > .acf-label {
+    display: none; }
+  body.post-type-mv_address_book .acf-field-clone .acf-field-group {
+    background: #fff;
+    margin-bottom: 20px;
+    border-radius: 10px; }
+  body.post-type-mv_address_book .acf-field-clone .acf-fields.-border {
+    background: transparent; }
+  body.post-type-mv_address_book .acf-fields > .acf-field-clone {
+    clear: none; }
+  body.post-type-mv_address_book .mv-followup-wrap {
+    display: none; }
+  body.post-type-mv_address_book .mv-contacts,
+  body.post-type-mv_address_book .mv-logo,
+  body.post-type-mv_address_book .mv-fonction {
+    margin-top: 0; }
+  body.post-type-mv_address_book #posts-filter .tablenav.top .select2-container, body.post-type-mv_address_book #posts-filter .tablenav.top select.acp-filter, body.post-type-mv_address_book #posts-filter .tablenav.top .wp-filter select.acp-filter, body.post-type-mv_address_book #posts-filter .tablenav.top #post-query-submit, body.post-type-mv_address_book #posts-filter .tablenav.top .ac-button__export, body.post-type-mv_address_book #posts-filter .tablenav.top .ab-reset-button, body.post-type-mv_address_book #posts-filter .tablenav.top .ac-button {
+    margin: 5px 3px;
+    font-size: 0.9em;
+    float: left; }
+  body.post-type-mv_address_book #posts-filter .tablenav.top #post-query-submit, body.post-type-mv_address_book #posts-filter .tablenav.top .ac-button__export, body.post-type-mv_address_book #posts-filter .tablenav.top .ab-reset-button {
+    background: #ce9e33;
+    border: solid 1px #c3a563;
+    color: #fff; }
+  body.post-type-mv_address_book #posts-filter .tablenav.top .ac-button {
+    text-decoration: none;
+    line-height: 26px;
+    height: 28px;
+    padding: 0 10px 1px;
+    cursor: pointer;
+    -webkit-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    border-radius: 3px;
+    white-space: nowrap;
+    box-sizing: border-box;
+    vertical-align: top;
+    -webkit-box-shadow: 0 1px 0 #ccc;
+    -khtml-box-shadow: 0 1px 0 #ccc;
+    -moz-box-shadow: 0 1px 0 #ccc;
+    -ms-box-shadow: 0 1px 0 #ccc;
+    -o-box-shadow: 0 1px 0 #ccc;
+    box-shadow: 0 1px 0 #ccc;
+    position: inherit; }
+  body.post-type-mv_address_book #posts-filter .tablenav.top select.multi-select {
+    max-height: 26px;
+    visibility: hidden; }
+  body.post-type-mv_address_book .wp-list-table .small-txt {
+    font-size: 0.7em;
+    padding: 0;
+    margin: 0;
+    color: #777; }
+  body.post-type-mv_address_book #mv-treemap-metabox .inside > li {
+    list-style: none; }
+  body.post-type-organisation .acf-relationship .filter.-search > span {
+    padding: 2px; }
+  body.post-type-organisation .acf-relationship .selection .list {
+    height: 60px; }
+  body.post-type-organisation .wrap {
+    margin-top: 20px; }
+  body.post-type-organisation .wp-heading-inline {
+    display: none; }
+  body.post-type-organisation #organisation-linked-contacts-table {
+    border-collapse: collapse; }
+    body.post-type-organisation #organisation-linked-contacts-table th, body.post-type-organisation #organisation-linked-contacts-table td {
+      text-align: left;
+      border: solid 1px #ddd;
+      border-right: solid 2px #bbb;
+      padding: 2px 8px; }
+    body.post-type-organisation #organisation-linked-contacts-table td:nth-child(odd) {
+      background: #f4f4f4; }
+    body.post-type-organisation #organisation-linked-contacts-table th {
+      background: #D7D7D7;
+      border-bottom-color: #efefef;
+      /*color: #fff;
+      border-top-color: #5a9ee1;
+      border-bottom-color: #5a9ee1;*/ }
+    body.post-type-organisation #organisation-linked-contacts-table tr:last-of-type th {
+      border-bottom-color: #ddd; }
+  body.post-type-organisation .add-new-contact {
+    margin-top: 20px; }
+  body.post-php.post-type-mv_address_book .wp-heading-inline, body.post-php.post-type-mv_address_book .page-title-action, body.post-php.post-type-organisation .wp-heading-inline, body.post-php.post-type-organisation .page-title-action, body.post-new-php.post-type-mv_address_book .wp-heading-inline, body.post-new-php.post-type-mv_address_book .page-title-action, body.post-new-php.post-type-organisation .wp-heading-inline, body.post-new-php.post-type-organisation .page-title-action {
+    display: none; }
+  body.post-php #acf_after_title-sortables .acf-postbox, body.post-new-php #acf_after_title-sortables .acf-postbox {
+    margin: 0; }
+
+.col {
+  width: 33.33333%;
+  float: left;
+  padding: 0 10px;
+  box-sizing: border-box; }
+  @media (max-width: 979px) {
+    .col {
+      width: 100%; } }
+
+@media (max-width: 979px) {
+  .col-2 {
+    width: 100% !important; } }
+
+.post-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  opacity: .8;
+  z-index: 9999; }
+  .post-loader svg {
+    position: absolute;
+    top: 50%;
+    left: 50%; }
+
+.yoast-alert, .ac-button-edit {
+  display: none !important; }
+
+.tablenav.top #doaction, #doaction2 {
+  margin: 0px 4px 0 4px; }
+
+.multi-select {
+  float: left; }
+
+/*# sourceMappingURL=mvab-admin.css.map */
