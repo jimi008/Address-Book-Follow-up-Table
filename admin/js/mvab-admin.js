@@ -43,7 +43,7 @@ jQuery( document ).ready(function( $ ) {
         $(".post-loader").css("display", "none");
     }
 
-    var catLevelClasses = ['.mv-cpo','.mv-cso','.mv-cto','.mv-cl4','.mv-cl5','.mv-cl6'];
+    var catLevelClasses = ['.mv-cpo','.mv-cso','.mv-cto','.mv-cl4','.mv-cl5'];
 
     // add contact to organisation button
     var orga_query_string = "mv_orga=";
@@ -209,7 +209,7 @@ jQuery( document ).ready(function( $ ) {
 
                         $(val + ' select').prop({disabled:true});
 
-                        if(val != '.mv-cl6' && val != ".mv-cpo"){
+                        if(val != ".mv-cpo"){
                             $(val + ' select').html($('<option></option>').val(data[index]['id']).html(data[index]['name']).attr({
                                 selected: 'selected'
                             }));
@@ -225,7 +225,7 @@ jQuery( document ).ready(function( $ ) {
 
     // not found orga name text input
     $('.organisation-name-to-be-added input')
-        .on('keydown', function(event) {
+        .on('keypress', function(event) {
             $('.mv-ab-orga-name-nomenclature select').html($('<option></option>').val('').html('Choisir').prop({
                 'selected': false
             }));
@@ -263,6 +263,25 @@ jQuery( document ).ready(function( $ ) {
         //     });
         // });
 
+    }
+
+    if (typeof acf !== "undefined") {
+        // get localized data
+        var postID = acf.get('post_id');
+        acf.add_filter('select2_ajax_results', function( json, params, instance ){
+
+            if (json['results']) {
+                $.map( json['results'], function( obj ) {
+                    if (obj['text']) {
+                        obj['text'] = obj['text'].replace(/(- )*/g, "");
+                    }
+                    return obj;
+                });
+            }
+
+            // return
+            return json;
+        });
     }
 
 

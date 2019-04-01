@@ -20,8 +20,17 @@ class Mooveat_Address_Book_Admin
         add_action('admin_menu', array( $this, 'mv_address_book_replace_submit_meta_box' ));
         add_filter('post_updated_messages', array( $this,  'mv_address_book_cpt_messages' ));
         add_action('current_screen', array( $this, 'wpse151723_remove_yoast_seo_posts_filter'), 20 );
+        add_filter( 'admin_body_class', array( $this,'acp_overflow_table_class'), 10 );
         add_action('acf/save_post', array($this,'ab_acf_save_post'), 16);
+        add_filter('acf/validate_value/name=organisation_name_to_be_added', array( $this, 'org_acf_validate_value'), 10, 4);
         //add_action( 'current_screen', 'wpse151723_remove_yoast_seo_posts_filter', 20 );
+        //add_filter('acf/load_value/name=organisation_name_to_be_added', 'org_acf_reset_value', 10, 3);
+
+    }
+    // Not possible by using some hook. it will always show horizontal scroll.
+    function acp_overflow_table_class( $classes ) {
+        $classes .= ' acp-overflow-table ';
+        return $classes;
     }
 
     /**
@@ -393,10 +402,10 @@ class Mooveat_Address_Book_Admin
 
         $procat_fields = array();
 
-        $acf_group = get_field('mv_cat_orga_grp');
+        $acf_cat_group = get_field('mv_cat_orga_grp');
         foreach ($ac_field as $acf_fd){
 
-            $acf_field = $acf_group[$acf_fd];
+            $acf_field = $acf_cat_group[$acf_fd];
             //error_log('$acf_field_val: '. $acf_field['value']);
             $procat_fields[] = $acf_field['value'];
         }
@@ -409,6 +418,37 @@ class Mooveat_Address_Book_Admin
             $procat_fields[] = $acf_field['value'];
         }
 
+        $new_org = $acf_group["organisation_name_to_be_added"];
+        if (!is_empty($new_org)) {
+            $parent_term_id = 8502;
+            foreach ($ac_field as $acf_fd){
+                $acf_field = $acf_cat_group[$acf_fd];
+                if (is_empty($acf_field)) {
+                    $term = term_exists("-", 'nomenclature_beta', $parent_term_id);
+                    if (null == $term) {
+                        $term = wp_insert_term(
+                        '-',
+                        'nomenclature_beta',
+                        array(
+                            'parent' => $parent_term_id,
+                            )
+                        );
+                    }
+                    $parent_term_id = $term['term_id'];
+                }
+                else {
+                    $parent_term_id = $acf_field['value'];
+                }
+            }
+            wp_insert_term(
+                $new_org,
+                'nomenclature_beta',
+                array(
+                    'parent' => $parent_term_id,
+                )
+            );
+        }
+
         foreach(get_field('mv_ab_tags_grp')['label_taxonomy'] as $term_object){
             $procat_fields[] = $term_object->term_id;
         };
@@ -419,4 +459,25 @@ class Mooveat_Address_Book_Admin
 
     }
 
+    function org_acf_validate_value( $valid, $value, $field, $input ){
+
+        // bail early if value is already invalid
+        if( !$valid ) {
+            return $valid;
+        }
+
+        if (!is_empty($value)) {
+            $term = term_exists($value, 'nomenclature_beta');
+            if (0 !== $term && null !== $term) {
+                $valid = "Déjà disponible dans la liste ci-dessus";
+            }
+        }
+
+        // return
+        return $valid;
+    }
+
+    public function org_acf_reset_value($value) {
+        return "";
+    }
 }

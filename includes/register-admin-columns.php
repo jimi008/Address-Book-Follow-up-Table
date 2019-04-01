@@ -144,7 +144,7 @@ function ac_custom_column_settings_e2e1dfda() {
             ) );
     }
 }
-add_action( 'ac/ready', 'ac_custom_column_settings_e2e1dfda' );
+add_action( 'ac/ready', 'ac_custom_column_settings_e2e1dfda', 2 );
 
 
 function ac_custom_column_settings_ed081c20() {
@@ -565,5 +565,5 @@ function ac_custom_column_settings_ed081c20() {
         ) );
     }
 }
-add_action( 'ac/ready', 'ac_custom_column_settings_ed081c20' );
+add_action( 'ac/ready', 'ac_custom_column_settings_ed081c20', 1 );
 

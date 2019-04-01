@@ -476,6 +476,25 @@ function my_ac_filter_menu_remove_empty_options( $args, $column ) {
 
 add_filter( 'acp/filtering/dropdown_args', 'my_ac_filter_menu_remove_empty_options', 10, 2 );
 
+function register_follow_up_table_page() {
+    add_submenu_page(
+        'edit.php?post_type=mv_address_book',
+        __( 'Tableau de suivi', 'follow-up-table' ),
+        __( 'Tableau de suivi', 'follow-up-table' ),
+        'manage_options',
+        'mv_address_book_org_follow_up_table',
+        'follow_up_table'
+    );
 
+    function follow_up_table() {
+        ob_start();
+        include_once plugin_dir_path( __FILE__  ) . 'admin/follow_up_table_page.php';
+
+        $template = ob_get_contents();
+        ob_clean();
+        echo $template;
+    }
+}
+add_action( 'admin_menu', 'register_follow_up_table_page' );
 
 
