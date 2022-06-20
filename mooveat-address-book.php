@@ -4,7 +4,7 @@ Plugin Name:  Mooveat Address Book
 Plugin URI:   https://mooveat.io
 Description:  Manage and modify address book with help of ACF
 Version:      1.0.0
-Author:       Laurent Nicolas & Zahir Ahmed
+Author:       Laurent Nicolas & Jamil Ahmed
 Author URI:   http://mooveat.io
 License:      GPLv3
 */
